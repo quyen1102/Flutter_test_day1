@@ -15,35 +15,30 @@ class ListViewTest extends StatelessWidget {
     this.updateMode,
     required this.myList,
   }) : super(key: key);
-  Function? replaceCharacter(myList, updateCharacter) {
+  List replaceCharacter(myList, updateCharacter) {
+    myList.clear();
     var updateCharacterAsList = updateCharacter.split('').toList();
     // print(myList);
     // print(updateCharacterAsList);
-    late int length;
-    if (myList.length > updateCharacterAsList.length) {
-      length = myList.length;
-    } else if (myList.length < updateCharacterAsList.length) {
-      length = updateCharacter.length;
-    } else {
-      length = updateCharacter.length;
-    }
-    for (int i = 0; i < length; i++) {}
-    // print(myList);
-    // return updateCharacterAsList;
-  }
-
-  List affterUpdateMode(updateMode, myList) {
-    if (updateMode == 'UPPER') {
-      for (int i = 0; i < myList.length; i++) {
-        myList[i].toUpperCase();
-      }
-    } else if (updateMode == 'LOWER ') {
-      for (int i = 0; i < myList.length; i++) {
-        myList[i].toLowerCase();
-      }
+    for (var item in updateCharacterAsList) {
+      myList.add(item);
     }
     print(myList);
     return myList;
+  }
+
+  List affterUpdateMode(updateMode, myList) {
+    List resultList = [];
+    if (updateMode == 'UPPER') {
+      for (var item in myList) {
+        resultList.add(item.toUpperCase());
+      }
+    } else if (updateMode == 'LOWER') {
+      for (var item in myList) {
+        resultList.add(item.toLowerCase());
+      }
+    }
+    return resultList;
   }
 
   int? differentCharacterCount(message) {
@@ -99,8 +94,8 @@ class ListViewTest extends StatelessWidget {
         ),
         SizedBox(height: size.height * 0.02),
         Text(
-          // 'Affter : ${replaceCharacter(myList, updateCharacter)}',
-          'Affter : ${updateCharacter!.split('').toList()}',
+          'Affter : ${replaceCharacter(myList, updateCharacter)}',
+          // 'Affter : ${updateCharacter!.split('').toList()}',
 
           style: const TextStyle(fontSize: 20),
         ),

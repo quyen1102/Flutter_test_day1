@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
           message: 'helllo',
           myList: ['a', 'b'],
           updateCharacter: 'string',
-          updateMode: 'UPPER',
+          updateMode: 'LOWER',
         ),
       ),
     );
